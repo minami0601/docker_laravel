@@ -17,19 +17,20 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     
-    @yield('css')
-
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/header.css') }}" rel="stylesheet">
+    @yield('css')
 </head>
 <body>
     <div id="app">
 
-        @include('common.header')
+        @yield('header')
 
-        <main class="py-4">
+        <div class="container my-5">
             @yield('content')
-        </main>
+        </div>
     </div>
 </body>
 </html>
