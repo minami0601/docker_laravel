@@ -61,7 +61,7 @@
             
             <div class="content">
                 <div class="title m-b-md">
-                    やんばるエキスパート
+                    やんばるQiita
                 </div>
 
                 <div class="links">
