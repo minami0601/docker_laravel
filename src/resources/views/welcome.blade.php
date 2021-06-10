@@ -61,7 +61,7 @@
             
             <div class="content">
                 <div class="title m-b-md">
-                    Yanbaru Qiita
+                    やんばるエキスパート
                 </div>
 
                 <div class="links">
