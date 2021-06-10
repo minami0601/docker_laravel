@@ -61,7 +61,7 @@
             
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Yanbaru Qiita
                 </div>
 
                 <div class="links">
