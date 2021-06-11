@@ -31,7 +31,7 @@
                             <label for="term" class="col-md-4 col-form-label text-md-right">期生<span class="text-danger">(※)</span></label>
 
                             <div class="col-md-6">
-                                <input id="term" type="number" class="form-control @error('email') is-invalid @enderror" name="term" value="{{ old('term') }}" autocomplete="term">
+                                <input id="term" type="number" class="form-control @error('term') is-invalid @enderror" name="term" value="{{ old('term') }}" autocomplete="term">
                                 <span>半角英数字2桁以内で入力してください。</span>
                                 @error('term')
                                     <span class="invalid-feedback" role="alert">

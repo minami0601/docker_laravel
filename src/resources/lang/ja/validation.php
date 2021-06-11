@@ -150,6 +150,10 @@ return [
         'email' => 'メールアドレス',
         'term' => '期生',
         'password' => 'パスワード',
+        'title' => '記事タイトル',
+        'category_id' => 'カテゴリー',
+        'summary' => '記事概要',
+        'url' => 'URL'
     ],
 
 ];
