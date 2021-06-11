@@ -52,8 +52,12 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'term' => ['required', 'string', 'min:2'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'term' => ['required', 'string', 'max:2', 'regex:/^[a-zA-Z0-9]+$/'],
+            'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^[a-zA-Z0-9]+$/'],
+        ],
+        [
+            'term.regex' => ':attributeは半角英数字で入力してください。',
+            'password.regex' => ':attributeは半角英数字で入力してください。',
         ]);
     }
 
@@ -68,6 +72,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'term' => $data['term'],
             'password' => Hash::make($data['password']),
         ]);
     }

@@ -15,7 +15,7 @@
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('login') }}"><i class="fas fa-pen mr-2"></i>ログイン</a>
+                            <a class="nav-link text-white" href="{{ route('login') }}">ログイン</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
@@ -24,16 +24,16 @@
                         @endif
                     @else
                         <li class="nav-item">
-                            <a class="nav-link" href="#">投稿</a>
+                            <a class="nav-link text-white" href="{{ route('articles.create') }}"><i class="fas fa-pen mr-2"></i>投稿</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">マイページ</a>
+                            <a class="nav-link text-white" href="#">マイページ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
+                            <a class="nav-link text-white" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                ログアウト
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
