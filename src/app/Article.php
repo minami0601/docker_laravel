@@ -12,4 +12,9 @@ class Article extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function escapeLike($str)
+    {
+        return str_replace(['\\', '%', '_'], ['\\\\', '\%', '\_'], $str);
+    }
 }
