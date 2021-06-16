@@ -6,3 +6,6 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+.search_form .form-group {
+    width: 400px;
+}
