@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SearchRequest;
+use App\Http\Requests\ArticleRequest;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Article;
@@ -55,16 +56,8 @@ class ArticlesController extends Controller
         return view('articles.create', ['categories' => $categories]);
     }
 
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
-
-        $this->validate($request,[
-            'title' => 'required|string|max:50',
-            'category_id' => 'required|string|max:1',
-            'summary' => 'required|string|min:10',
-            'url' => 'required|string|url',
-        ]);
-
         $request->user()->articles()->create([
             'title' => $request->title,
             'category_id' => $request->category_id,
@@ -80,4 +73,16 @@ class ArticlesController extends Controller
         $array_category = $category->getLists();
         return view('articles.show', compact('article', 'array_category'));
     } 
+
+    public function edit(Article $article, Category $category)
+    {
+        $array_category = $category->getLists();
+        return view('articles.edit', compact('article', 'array_category'));
+    } 
+
+    public function update(ArticleRequest $request, Article $article)
+    {
+        $article->fill($request->all())->save();
+        return redirect('/')->with('flash_message', '記事を更新しました');
+    }
 }
