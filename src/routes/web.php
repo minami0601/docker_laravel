@@ -16,9 +16,10 @@ Route::get('/', 'ArticlesController@index')->name('index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('articles', 'ArticlesController', ['only' => ['show']]);
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('articles', 'ArticlesController', ['only' => ['show', 'create', 'store', 'destroy']]);
+    Route::resource('articles', 'ArticlesController', ['only' => ['create', 'store', 'destroy']]);
 });
 
 

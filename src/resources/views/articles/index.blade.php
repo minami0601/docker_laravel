@@ -107,7 +107,7 @@
                         <dd class="ml-5 w-50">{{ $article->created_at->format('Y年n月j日') }}</dd>
                     </dl>
                     <div class="d-flex justify-content-center">
-                        <a href="#" class="d-inline-block btn btn-success">詳細をみる</a>
+                        <a href="{{ route('articles.show', ['article' => $article]) }}" class="d-inline-block btn btn-success">詳細をみる</a>
                     </div>
                 </div>
             </div>
