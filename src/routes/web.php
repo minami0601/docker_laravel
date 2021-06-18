@@ -20,3 +20,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('articles', 'ArticlesController', ['only' => ['show', 'create', 'store', 'destroy']]);
 });
+
+
+Route::post('csv/export', 'CsvController@csvExport')->name('csv.export');
