@@ -29,8 +29,11 @@
         @yield('header')
 
         <div class="container my-5">
+            @include('common.flash_messages')
             @yield('content')
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>
