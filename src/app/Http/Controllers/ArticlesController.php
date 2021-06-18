@@ -74,4 +74,10 @@ class ArticlesController extends Controller
 
         return redirect('/');
     }
+
+    public function show(Article $article, Category $category)
+    {
+        $array_category = $category->getLists();
+        return view('articles.show', compact('article', 'array_category'));
+    } 
 }

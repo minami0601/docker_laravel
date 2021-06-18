@@ -1,0 +1,17 @@
+.article-show dl {
+    margin-top: 50px;
+}
+.article-show dt {
+    text-align: right;
+    width: 100px;
+}
+.article-show dd {
+    width: 300px;
+    padding: 0 60px;
+}
+.article-show .show-btn a {
+    padding: 15px 20px;
+}
+.article-show .show-btn a:nth-child(n + 2) {
+    margin-left: 15px;
+}
