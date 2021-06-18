@@ -66,6 +66,14 @@
         </div>
     </form>
 </div>
+<div class="container">
+    <div class="row justify-content-end">
+        <form id='csvform' action="{{ route('csv.export') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-success">CSVインポート</button>
+        </form>
+    </div>
+</div>
 <div class="row my-5 justify-content-start">
     @if ($articles->count())
         @foreach ($articles as $article)
