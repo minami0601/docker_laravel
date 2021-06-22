@@ -17,6 +17,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('articles', 'ArticlesController', ['only' => ['show']]);
+Route::get('user', 'UserController@show')->name('user.show');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('articles', 'ArticlesController', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);

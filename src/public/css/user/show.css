@@ -1,0 +1,22 @@
+.user-show dl {
+    margin-top: 50px;
+}
+.user-show dt {
+    text-align: right;
+    width: 110px;
+}
+.user-show dd {
+    width: 300px;
+    padding: 0 60px;
+}
+.user-show .show-btn a {
+    padding: 15px 20px;
+}
+.user-show .show-btn a:nth-child(n + 2) {
+    margin-left: 15px;
+}
+
+.card-item {
+    padding-left: 0;
+    padding-right: 0;
+}

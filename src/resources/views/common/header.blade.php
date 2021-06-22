@@ -27,7 +27,7 @@
                             <a class="nav-link text-white" href="{{ route('articles.create') }}"><i class="fas fa-pen mr-2"></i>投稿</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">マイページ</a>
+                            <a class="nav-link text-white" href="{{ route('user.show')}}">マイページ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('logout') }}"
