@@ -76,6 +76,7 @@ class ArticlesController extends Controller
 
     public function edit(Article $article, Category $category)
     {
+        $this->authorize('update', $article);
         $array_category = $category->getLists();
         return view('articles.edit', compact('article', 'array_category'));
     } 
