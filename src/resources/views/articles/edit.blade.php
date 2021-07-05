@@ -21,7 +21,7 @@
 
                         <div class="form-group w-75 mx-auto  mb-4">
                             <label for="title">記事タイトル<span class="text-danger">(※)</span></label>
-                            <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $article->title ?? old('title') }}" autocomplete="title" autofocus>
+                            <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title')?: $article->title  }}" autocomplete="title" autofocus>
                             @error('title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group w-75 mx-auto  mb-4">
                             <label for="summary">記事概要<span class="text-danger">(※)</span></label>
-                            <textarea name="summary" id="summary" cols="30" rows="10" class="form-control @error('summary') is-invalid @enderror">{{ $article->summary ?? old('summary') }}</textarea>
+                            <textarea name="summary" id="summary" cols="30" rows="10" class="form-control @error('summary') is-invalid @enderror">{{ old('summary')?: $article->summary }}</textarea>
                             @error('summary')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="form-group w-75 mx-auto">
                             <label for="url">記事URL<span class="text-danger">(※)</span></label>
-                            <input id="url" type="text" class="form-control @error('url') is-invalid @enderror" name="url" value="{{ $article->url ?? old('url') }}" autocomplete="url">
+                            <input id="url" type="text" class="form-control @error('url') is-invalid @enderror" name="url" value="{{ old('url')?: $article->url }}" autocomplete="url">
                             @error('url')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
