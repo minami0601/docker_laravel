@@ -64,6 +64,7 @@
                             <button type="submit" class="btn btn-primary">
                                 更新する
                             </button>
+                            <a class="btn btn-secondary" href="/">戻る</a>
                         </div>
                     </form>
                 </div>
