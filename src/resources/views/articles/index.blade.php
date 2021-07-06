@@ -87,9 +87,16 @@
                         <i class="fas fa-user-alt mr-2"></i>{{ $article->user->name }}
                     </div>
                     @if(Auth::id() === $article->user->id)
-                        <div class="btn ml-auto">
-                            <a class="btn btn-secondary" href="{{ route('articles.edit', ['article' => $article]) }}">編集</a>
-                            <a  class="btn btn-danger" href="">削除</a>
+                        <div class="d-flex btn ml-auto">
+                            <div class="mr-2">
+                                <a class="btn btn-secondary" href="{{ route('articles.edit', ['article' => $article]) }}"><i class="far fa-edit mr-1"></i>編集</a>
+                            </div>
+                            <form name="deleteform" method="POST" action="{{ route('articles.destroy', $article->id) }}">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-danger d-inline" onClick="return Check()"><i class="far fa-trash-alt mr-1"></i>削除</button>
+                            </form>
+        
                         </div>
                     @endif
                 </div>

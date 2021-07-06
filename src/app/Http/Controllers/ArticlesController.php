@@ -52,7 +52,6 @@ class ArticlesController extends Controller
     public function create(Category $category)
     {
         $categories = $category->getLists();
-
         return view('articles.create', ['categories' => $categories]);
     }
 
@@ -85,5 +84,13 @@ class ArticlesController extends Controller
     {
         $article->fill($request->all())->save();
         return redirect('/')->with('flash_message', '記事を更新しました');
+    }
+
+    public function destroy($id)
+    {
+        $article = Article::find($id);
+        $this->authorize('delete', $article);
+        $article->delete();
+        return redirect('/')->with('flash_message', '記事を削除しました');
     }
 }
