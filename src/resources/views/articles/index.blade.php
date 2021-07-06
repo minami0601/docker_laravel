@@ -82,8 +82,16 @@
             @else
             <div class="card col-5 ml-5 mt-5 card-item">
             @endif
-                <div class="card-header font-weight-bold">
-                    <i class="fas fa-user-alt mr-2"></i>{{ $article->user->name }}
+                <div class="card-header font-weight-bold d-flex align-items-center">
+                    <div>
+                        <i class="fas fa-user-alt mr-2"></i>{{ $article->user->name }}
+                    </div>
+                    @if(Auth::id() === $article->user->id)
+                        <div class="btn ml-auto">
+                            <a class="btn btn-secondary" href="{{ route('articles.edit', ['article' => $article]) }}">編集</a>
+                            <a  class="btn btn-danger" href="">削除</a>
+                        </div>
+                    @endif
                 </div>
                 <div class="card-body">
                     <dl class="d-flex">
