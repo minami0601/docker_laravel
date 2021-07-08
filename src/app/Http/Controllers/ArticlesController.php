@@ -7,6 +7,7 @@ use App\Http\Requests\ArticleRequest;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Article;
+use App\Comment;
 use Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -52,7 +53,7 @@ class ArticlesController extends Controller
     public function create(Category $category)
     {
         $categories = $category->getLists();
-        return view('articles.create', ['categories' => $categories]);
+        return view('articles.create', compact('categories'));
     }
 
     public function store(ArticleRequest $request)
@@ -69,8 +70,9 @@ class ArticlesController extends Controller
 
     public function show(Article $article, Category $category)
     {
+        $comments = $article->comments;
         $array_category = $category->getLists();
-        return view('articles.show', compact('article', 'array_category'));
+        return view('articles.show', compact('article', 'array_category', 'comments'));
     } 
 
     public function edit(Article $article, Category $category)

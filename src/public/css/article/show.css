@@ -15,3 +15,10 @@
 .article-show .show-btn a:nth-child(n + 2) {
     margin-left: 15px;
 }
+
+.show-comment {
+    width: 100%;
+    height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

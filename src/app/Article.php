@@ -20,4 +20,9 @@ class Article extends Model
     {
         return str_replace(['\\', '%', '_'], ['\\\\', '\%', '\_'], $str);
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment')->orderBy('created_at', 'DESC');
+    }
 }
