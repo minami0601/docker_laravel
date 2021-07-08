@@ -21,7 +21,8 @@ Route::get('user', 'UserController@show')->name('user.show');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('articles', 'ArticlesController', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
+    Route::resource('comments', 'CommentsController', ['only' => ['store', 'destroy']]);
+    Route::get('/comments/create/{article}', 'CommentsController@create')->name('comments.create');
 });
-
 
 Route::post('csv/export', 'CsvController@csvExport')->name('csv.export');
