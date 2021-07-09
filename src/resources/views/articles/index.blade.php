@@ -8,7 +8,7 @@
 @include('common.header')
 @section('content')
 <div class="serch_form w-100  my-5">
-    <form method="GET" class="text-right mx-auto" style="width: 400px;" action="{{ route('index') }}">
+    <form method="GET" class="text-right mx-auto" style="width: 400px;" action="{{ route('articles.search') }}">
         @csrf
         <div class="form-group row  justify-content-start">
             <label for="staticEmail" class="col-form-label mr-3" style="width: 100px;">期生</label>
@@ -16,11 +16,7 @@
                 <select class="form-control" id="categoryNumber" name="term">
                     <option></option>
                     @foreach ($termsList as $key => $term)
-                        @if ($pagenate_params['term'] == $term)
-                            <option value="{{ $term }}" selected>{{ $term }}</option>
-                        @else
-                            <option value="{{ $term }}">{{ $term }}</option>
-                        @endif
+                        <option value="{{ $term }}" @if(old('term', $pagenate_params['term'] ?? '') == $term) selected @endif>{{ $term }}</option>
                     @endforeach
                 </select>
                 @error('term')
@@ -36,11 +32,8 @@
                 <select class="form-control mr-auto" id="categoryNumber" name="category_id">
                     <option></option>
                     @foreach ($categoriesList as $key => $name)
-                        @if ($pagenate_params['category_id'] == $key)
-                            <option value="{{ $key }}" selected>{{ $name }}</option>
-                        @else
-                            <option value="{{ $key }}">{{ $name }}</option>
-                        @endif
+                        
+                        <option value="{{ $key }}" @if(old('category_id', $pagenate_params['category_id'] ?? '') == $key) selected @endif>{{ $name }}</option>
                     @endforeach
                 </select>
                 @error('category_id')
