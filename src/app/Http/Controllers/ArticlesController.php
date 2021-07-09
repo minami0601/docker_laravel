@@ -15,39 +15,11 @@ class ArticlesController extends Controller
 {
     public function index(SearchRequest $request, Category $category, Article $article)
     {
-        $query = Article::query();
-
-        if(!empty($request->input('term'))) {
-            $query->whereHas('user', function($q) use ($request){
-                $q->where('term', $request->input('term'));
-            });
-        }
-
-        if(!empty($request->input('category_id'))) {
-            $query->where('category_id', $request->input('category_id'));
-        }
-
-        if(!empty($request->input('word'))) {
-            $query->where('summary', 'like', '%'.$article->escapeLike($request->input('word')).'%');
-        }
-
-        $articles = $query->orderBy('created_at', 'desc')->paginate(5);
-
+        $articles = Article::orderBy('created_at', 'desc')->paginate(5);
         $termsList = range(1, 20);
         $categoriesList = $category->getLists();
 
-        $data = [
-            'termsList' => $termsList,
-            'categoriesList' => $categoriesList,
-            'articles' => $articles,
-            'pagenate_params' => [
-                'term' => $request->input('term') ?? '',
-                'category_id' => $request->input('category_id') ?? '',
-                'word' => $request->input('word') ?? '',
-            ],
-        ];
-        
-        return view('articles.index', $data);
+        return view('articles.index', compact('articles', 'termsList', 'categoriesList'));
     }
 
     public function create(Category $category)
@@ -94,5 +66,29 @@ class ArticlesController extends Controller
         $this->authorize('delete', $article);
         $article->delete();
         return redirect('/')->with('flash_message', '記事を削除しました');
+    }
+
+    public function search(SearchRequest $request, Category $category, Article $article) 
+    {
+        $term = $request->input('term');
+        $category_id = $request->input('category_id');
+        $word = $request->input('word');
+        $articles = $article->serch($term, $category_id, $word);
+
+        $termsList = range(1, 20);
+        $categoriesList = $category->getLists();
+
+        $data = [
+            'termsList' => $termsList,
+            'categoriesList' => $categoriesList,
+            'articles' => $articles,
+            'pagenate_params' => [
+                'term' => $term ?? '',
+                'category_id' => $category_id ?? '',
+                'word' => $word ?? '',
+            ],
+        ];
+        
+        return view('articles.index', $data);
     }
 }

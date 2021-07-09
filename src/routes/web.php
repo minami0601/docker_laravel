@@ -24,5 +24,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('comments', 'CommentsController', ['only' => ['store', 'destroy']]);
     Route::get('/comments/create/{article}', 'CommentsController@create')->name('comments.create');
 });
-
+Route::get('/article/search', 'ArticlesController@search')->name('articles.search');
 Route::post('csv/export', 'CsvController@csvExport')->name('csv.export');
